@@ -5,24 +5,10 @@ import { EmployeeContext } from "./createContext";
 
 const STORAGE_KEY = "employees";
 
-const initialEmployees = [
-  {
-    id: crypto.randomUUID(),
-    firstName: "Aaditya",
-    lastName: "Jujagar",
-    gender: "male",
-    dob: "2002-02-20",
-    state: "Maharashtra",
-    city: "Solapur",
-    isActive: true,
-    createdAt: new Date().toISOString(),
-  },
-];
-
 export const EmployeeProvider = ({ children }) => {
   const [employees, setEmployees] = useState(() => {
     const storedEmployees = localStorage.getItem(STORAGE_KEY);
-    return storedEmployees ? JSON.parse(storedEmployees) : initialEmployees;
+    return storedEmployees ? JSON.parse(storedEmployees) : [];
   });
 
   useEffect(() => {
